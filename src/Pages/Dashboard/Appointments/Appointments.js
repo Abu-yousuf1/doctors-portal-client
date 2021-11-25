@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
 
 const Appointments = ({ date }) => {
     const { user, token } = useAuth();
@@ -14,7 +15,7 @@ const Appointments = ({ date }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/appointments?email=${user.email}&date=${date.toLocaleDateString()}`, {
+        fetch(`https://safe-sands-72906.herokuapp.com/appointments?email=${user.email}&date=${date.toLocaleDateString()}`, {
             headers: {
                 'authorization': `Bearer ${token}`
             }
@@ -51,7 +52,7 @@ const Appointments = ({ date }) => {
                                 </TableCell>
                                 <TableCell align="right">{row.serviceName}</TableCell>
                                 <TableCell align="right">{row.time}</TableCell>
-                                <TableCell align="right">{ }</TableCell>
+                                <TableCell align="right">{row.payment ? 'Paid' : <Link to={`dashboard/payment/${row._id}`}><button >pay</button></Link>}</TableCell>
 
                             </TableRow>
                         ))}

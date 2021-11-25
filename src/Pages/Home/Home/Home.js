@@ -6,6 +6,7 @@ import Banner from './../Banner/Banner';
 import Treatment from '../Treatment/Treatment';
 import Testimonial from './../Testimonial/Testimonial';
 import Form from '../Form/Form';
+import Doctors from '../Doctors/Doctors';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <Treatment />
             <AppointmentBanner />
             <Testimonial />
+            <Doctors />
             <Form />
         </div>
     );

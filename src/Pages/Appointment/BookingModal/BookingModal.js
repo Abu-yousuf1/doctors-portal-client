@@ -22,7 +22,7 @@ const style = {
 
 const BookingModal = ({ handleClose, open, booking, date, setBookingSuccess }) => {
     const { user } = useAuth();
-    const { name, time } = booking
+    const { name, time, price } = booking
     const initialInfo = { patientName: user.displayName, email: user.email, phone: "" }
     const [bookingInfo, setBookingInfo] = useState(initialInfo)
 
@@ -31,11 +31,12 @@ const BookingModal = ({ handleClose, open, booking, date, setBookingSuccess }) =
         const appointment = {
             ...bookingInfo,
             time,
+            price,
             serviceName: name,
             date: date.toLocaleDateString()
         }
 
-        fetch('http://localhost:5000/appointments', {
+        fetch('https://safe-sands-72906.herokuapp.com/appointments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
